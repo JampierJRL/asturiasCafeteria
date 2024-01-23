@@ -1,0 +1,165 @@
+<!-- TOP BANNER -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container-fluid mt--7 mb-5">
+    <div class="row">
+        <!-- TABLA LISTA DATA -->
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Lista de productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead>
+                                <tr>
+                                    <th scope="col">codProducto</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">observacion</th>
+                                    <th scope="col">precioCompra</th>
+                                    <th scope="col">precioVenta</th>
+                                    <th scope="col">stockAlmacen</th>
+                                    <th scope="col">stockCompra</th>
+                                    <th scope="col">codCategoria</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of dtListaProductos">
+                                    <td>{{item.codProducto}}</td>
+                                    <td>{{item.descripcionProducto}}</td>
+                                    <td>{{item.estado}}</td>
+                                    <td>{{item.observacion}}</td>
+                                    <td>{{item.precioCompra}}</td>
+                                    <td>{{item.precioVenta}}</td>
+                                    <td>{{item.stockAlmacen}}</td>
+                                    <td>{{item.stockCompra}}</td>
+                                    <td>{{item.categoria.descripcionCategoria}}</td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" (click)="onPreviewModel(item)">Editar</button>
+                                        <button class="btn btn-sm btn-danger" (click)="onEliminarProducto(item.codProducto)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FORMULARIO -->
+        <div class="col-lg-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Formulario productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="overflow: auto; max-height: 400px;">
+                    <form (submit)="onprocesarProductos()" [formGroup]="modeloProducto">
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Producto</label>
+                                <input type="text" class="form-control" formControlName="descripcionProducto">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Observacion</label>
+                                <input type="text" class="form-control" formControlName="observacion">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Precio Compra</label>
+                                <input type="text" class="form-control" formControlName="precioCompra">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Precio Venta</label>
+                                <input type="text" class="form-control" formControlName="precioVenta">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Stock Almacen</label>
+                                <input type="text" class="form-control" formControlName="stockAlmacen">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Stock Compra</label>
+                                <input type="text" class="form-control" formControlName="stockCompra">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Estado</label>
+                                <select class="form-control" formControlName="estado">
+                              <option value="">---: Seleccione :---</option>
+                              <option value="true">Activo</option>
+                              <option value="false">Inactivo</option>
+                          </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Categoría</label>
+                                <app-cbo-categorias-productos [setCategoria]="modeloProducto.get('categoria.codCategoria').value" (getCategoria)="modeloProducto.get('categoria.codCategoria').setValue($event)">
+                                </app-cbo-categorias-productos>
+                            </div>
+                        </div>
+
+
+
+                        {{dtListaProductos | json}}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" [disabled]="!modeloProducto.valid" class="btn btn-success">Procesar</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                    {{frmDatosPersonales.value | json}}
+                    <div class="row" [formGroup]="frmDatosPersonales">
+                        <app-cbo-departamento (outValor)="frmDatosPersonales.get('codDepartamento').setValue($event)"></app-cbo-departamento>
+                        <br>
+                        <app-cbo-provincias [setDepartamento]="frmDatosPersonales.controls.codDepartamento.value" (outValor)="frmDatosPersonales.get('codProvincia').setValue($event)"></app-cbo-provincias>
+                        <br>
+                        <app-cbo-distritos [setProvincia]="frmDatosPersonales.controls.codProvincia.value" (outValor)="frmDatosPersonales.get('codDistrito').setValue($event)"></app-cbo-distritos>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

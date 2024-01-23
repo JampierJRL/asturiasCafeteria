@@ -1,0 +1,262 @@
+<!-- TOP BANNER -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container-fluid mt--7 mb-5">
+    <div class="row">
+        <!-- TABLA LISTA DATA -->
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Lista de productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">apellidoMaterno</th>
+                                    <th scope="col">apellidoPaterno</th>
+                                    <th scope="col">celular</th>
+                                    <th scope="col">direccion</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">estadoPersona</th>
+                                    <th scope="col">fechaEgreso</th>
+                                    <th scope="col">fechaIngreso</th>
+                                    <th scope="col">fechaNacimiento</th>
+                                    <th scope="col">numeroDocumento</th>
+                                    <th scope="col">primerNombre</th>
+                                    <th scope="col">razonSocial</th>
+                                    <th scope="col">ruc</th>
+                                    <th scope="col">segundoNombre</th>
+                                    <th scope="col">sexoDescripcion</th>
+                                    <th scope="col">telefono</th>
+                                    <th scope="col">codTipoDocumento</th>
+                                    <th scope="col">codDistrito</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of dtListaDatosPersonales">
+                                    <td>{{item.codPersona}}</td>
+                                    <td>{{item.apellidoMaterno}}</td>
+                                    <td>{{item.apellidoPaterno}}</td>
+                                    <td>{{item.celular}}</td>
+                                    <td>{{item.direccion}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.estadoPersona}}</td>
+                                    <td>{{item.fechaEgreso}}</td>
+                                    <td>{{item.fechaIngreso}}</td>
+                                    <td>{{item.fechaNacimiento}}</td>
+                                    <td>{{item.numeroDocumento}}</td>
+                                    <td>{{item.primerNombre}}</td>
+                                    <td>{{item.razonSocial}}</td>
+                                    <td>{{item.ruc}}</td>
+                                    <td>{{item.segundoNombre}}</td>
+                                    <td>{{item.sexoDescripcion}}</td>
+                                    <td>{{item.telefono}}</td>
+                                    <td>{{item.tipoDocumento.descripcionDocumento}}</td>
+                                    <td>{{item.ubigeo.nombreDistrito}}</td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" (click)="onPreviewModel(item)">Editar</button>
+                                        <button class="btn btn-sm btn-danger" (click)="onEliminarDatosPersonales(item.codPersona)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FORMULARIO -->
+        <div class="col-lg-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Formulario productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="overflow: auto; max-height: 400px;">
+                    <form (submit)="onprocesarDatosPersonales()" [formGroup]="modeloDatosPersonales">
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Apellido Materno</label>
+                                <input type="text" class="form-control" formControlName="apellidoMaterno">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Apellido Paterno</label>
+                                <input type="text" class="form-control" formControlName="apellidoPaterno">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Celular</label>
+                                <input type="text" class="form-control" formControlName="celular">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Direccion</label>
+                                <input type="text" class="form-control" formControlName="direccion">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" formControlName="email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Estado Persona</label>
+                                <select class="form-control" formControlName="estadoPersona">
+                                  <option value="">---: Seleccione :---</option>
+                                  <option value="true">Activo</option>
+                                  <option value="false">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Fecha Egreso</label>
+                                <input type="date" class="form-control" formControlName="fechaEgreso">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Fecha Ingreso</label>
+                                <input type="date" class="form-control" formControlName="fechaIngreso">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Fecha Nacimiento</label>
+                                <input type="date" class="form-control" formControlName="fechaNacimiento">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Nº Documento</label>
+                                <input type="text" class="form-control" formControlName="numeroDocumento">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Primer Nombre</label>
+                                <input type="text" class="form-control" formControlName="primerNombre">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Razon Social</label>
+                                <input type="text" class="form-control" formControlName="razonSocial">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Nº RUC</label>
+                                <input type="text" class="form-control" formControlName="ruc">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Segundo Nombre</label>
+                                <input type="text" class="form-control" formControlName="segundoNombre">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Sexo</label>
+                                <select class="form-control" formControlName="sexoDescripcion">
+                                <option value="">---: Seleccione :---</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Telefono</label>
+                                <input type="text" class="form-control" formControlName="telefono">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Tipo Documento</label>
+                                <app-cbo-tipo-documento [setTipoDocumento]="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').value" (getTipoDocumento)="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').setValue($event)">
+                                </app-cbo-tipo-documento>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- CBO Departamento -->
+                            <div class="col-md-12 mb-4">
+                                <label for="codDepartamento">Departamento</label>
+                                <app-cbo-departamento [setValor]="frmUbigeo.get('codDepartamento').value" (outValor)="frmUbigeo.get('codDepartamento').setValue($event)"></app-cbo-departamento>
+                            </div>
+
+                            <!-- CBO Provincia -->
+                            <div class="col-md-12 mb-4">
+                                <label for="codProvincia">Código de Provincia</label>
+                                <app-cbo-provincias [setValor]="frmUbigeo.get('codProvincia').value" [setDepartamento]="frmUbigeo.get('codDepartamento').value" (outValor)="frmUbigeo.get('codProvincia').setValue($event)"></app-cbo-provincias>
+                            </div>
+
+                            <!-- CBO Distrito -->
+                            <div class="col-md-12 mb-4">
+                                <label for="codDistrito">Código de Distrito</label>
+                                <app-cbo-distritos [setValor]="frmUbigeo.get('codDistrito').value" [setProvincia]="frmUbigeo.get('codProvincia').value" (outValor)="frmUbigeo.get('codDistrito').setValue($event)" (change)="onDistrito()">
+                                </app-cbo-distritos>
+                            </div>
+                        </div>
+
+                        {{modeloDatosPersonales.value| json}} {{frmUbigeo.value | json}}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success">Procesar</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>

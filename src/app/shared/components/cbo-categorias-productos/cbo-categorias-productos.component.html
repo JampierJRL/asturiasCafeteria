@@ -1,0 +1,4 @@
+<select class="form-control" [(ngModel)]="setCategoria" (change)="onEmitter()">
+<option value="">--: Seleccione :--</option>
+<option *ngFor="let categoria of dtCategorias" [value]="categoria.codCategoria">{{categoria.descripcionCategoria}}</option>
+</select>

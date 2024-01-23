@@ -1,0 +1,2 @@
+
+export const titleApp = "ASTURIRESTOBAR |"

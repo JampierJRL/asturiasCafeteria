@@ -1,0 +1,101 @@
+<!-- TOP BANNER -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONETNIDO -->
+<div class="container-fluid mt--7 mb-5">
+    <div class="row">
+        <!-- TABLA LISTA DATA -->
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Lista de categorias productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responseive">
+                                <table class="table align-items-center  table-flush">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Descripcion</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Nº Mesa</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of dtListaMesas">
+                                            <td>{{item.codMesa}}</td>
+                                            <td>{{item.descripcion}}</td>
+                                            <td>{{item.estado}}</td>
+                                            <td>{{item.numeroMesa}}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-warning" (click)="onPreviewModel(item)">Editar</button>
+                                                <button class="btn btn-sm btn-danger" (click)="onEliminarMesas(item.codMesa)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FORMULARIO -->
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Formulario Mesas</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form (submit)="onprocesarMesas()" [formGroup]="modeloMesa">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Mesa</label>
+                                <input type="text" class="form-control" formControlName="descripcion">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Estado</label>
+                                <select class="form-control" formControlName="estado">
+                                  <option value="">---: Seleccione :---</option>
+                                  <option value="true">Activo</option>
+                                  <option value="false">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Nº Mesa</label>
+                                <input type="text" class="form-control" formControlName="numeroMesa">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" [disabled]="!modeloMesa.valid" class="btn btn-success">Procesar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

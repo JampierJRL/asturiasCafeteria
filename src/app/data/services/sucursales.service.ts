@@ -7,7 +7,7 @@ import { ISucursales } from "../interfaces/ISucursales";
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriaproductoService {
+export class SucursalesService {
 
   urlApi = environment.apiPath;
 

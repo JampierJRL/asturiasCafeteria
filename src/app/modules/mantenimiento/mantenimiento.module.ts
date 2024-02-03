@@ -12,6 +12,7 @@ import { TipoDocumentoComponent } from './tipodocumento/tipodocumento.component'
 import { TipoPagoComponent } from './tipopago/tipopago.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
 import { DatosPersonalesComponent } from './datospersonales/datospersonales.component';
+import { SucursalesComponent } from './sucursales/sucursales.component';
 
 
 
@@ -25,7 +26,8 @@ import { DatosPersonalesComponent } from './datospersonales/datospersonales.comp
     TipoDocumentoComponent,
     TipoPagoComponent,
     PerfilesComponent,
-    DatosPersonalesComponent
+    DatosPersonalesComponent,
+    SucursalesComponent
 
   ],
   imports: [

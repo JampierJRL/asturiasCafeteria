@@ -94,10 +94,18 @@
                 <div class="card-body" style="overflow: auto; max-height: 400px;">
                     <form (submit)="onprocesarDatosPersonales()" [formGroup]="modeloDatosPersonales">
 
+
                         <div class="row">
                             <div class="col-md-12 mb-4">
-                                <label for="">Apellido Materno</label>
-                                <input type="text" class="form-control" formControlName="apellidoMaterno">
+                                <label for="">Primer Nombre</label>
+                                <input type="text" class="form-control" formControlName="primerNombre">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Segundo Nombre</label>
+                                <input type="text" class="form-control" formControlName="segundoNombre">
                             </div>
                         </div>
 
@@ -107,11 +115,57 @@
                                 <input type="text" class="form-control" formControlName="apellidoPaterno">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Apellido Materno</label>
+                                <input type="text" class="form-control" formControlName="apellidoMaterno">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Tipo Documento</label>
+                                <app-cbo-tipo-documento [setTipoDocumento]="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').value" (getTipoDocumento)="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').setValue($event)">
+                                </app-cbo-tipo-documento>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Nº Documento</label>
+                                <input type="text" class="form-control" formControlName="numeroDocumento">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Fecha Nacimiento</label>
+                                <input type="date" class="form-control" formControlName="fechaNacimiento">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Sexo</label>
+                                <select class="form-control" formControlName="sexoDescripcion">
+                              <option value="">---: Seleccione :---</option>
+                              <option value="Masculino">Masculino</option>
+                              <option value="Femenino">Femenino</option>
+                            </select>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-12 mb-4">
                                 <label for="">Celular</label>
                                 <input type="text" class="form-control" formControlName="celular">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Telefono</label>
+                                <input type="text" class="form-control" formControlName="telefono">
                             </div>
                         </div>
 
@@ -131,13 +185,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12 mb-5">
-                                <label for="">Estado Persona</label>
-                                <select class="form-control" formControlName="estadoPersona">
-                                  <option value="">---: Seleccione :---</option>
-                                  <option value="true">Activo</option>
-                                  <option value="false">Inactivo</option>
-                                </select>
+                            <div class="col-md-12 mb-4">
+                                <label for="">Razon Social</label>
+                                <input type="text" class="form-control" formControlName="razonSocial">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Nº RUC</label>
+                                <input type="text" class="form-control" formControlName="ruc">
                             </div>
                         </div>
 
@@ -156,72 +213,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Fecha Nacimiento</label>
-                                <input type="date" class="form-control" formControlName="fechaNacimiento">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Nº Documento</label>
-                                <input type="text" class="form-control" formControlName="numeroDocumento">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Primer Nombre</label>
-                                <input type="text" class="form-control" formControlName="primerNombre">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Razon Social</label>
-                                <input type="text" class="form-control" formControlName="razonSocial">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Nº RUC</label>
-                                <input type="text" class="form-control" formControlName="ruc">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Segundo Nombre</label>
-                                <input type="text" class="form-control" formControlName="segundoNombre">
-                            </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-12 mb-5">
-                                <label for="">Sexo</label>
-                                <select class="form-control" formControlName="sexoDescripcion">
+                                <label for="">Estado Persona</label>
+                                <select class="form-control" formControlName="estadoPersona">
                                 <option value="">---: Seleccione :---</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Femenino">Femenino</option>
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
                               </select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Telefono</label>
-                                <input type="text" class="form-control" formControlName="telefono">
-                            </div>
-                        </div>
 
-
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <label for="">Tipo Documento</label>
-                                <app-cbo-tipo-documento [setTipoDocumento]="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').value" (getTipoDocumento)="modeloDatosPersonales.get('tipoDocumento.codTipodocumento').setValue($event)">
-                                </app-cbo-tipo-documento>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <!-- CBO Departamento -->

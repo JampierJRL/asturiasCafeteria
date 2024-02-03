@@ -80,7 +80,9 @@
                                 </select>
                             </div>
                         </div>
-                        {{dtListaCategoriasProducto | json}}
+
+
+                        {{modelo.value| json}}
                         <div class="row">
                             <div class="col-md-12">
                                 <button type="submit" [disabled]="!modelo.valid" class="btn btn-success">Procesar</button>

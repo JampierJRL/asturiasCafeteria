@@ -29,7 +29,7 @@ export class DatosPersonalesService {
    * @param data
    * @returns
    */
-  srvCrearDatosPersonales(data: any): Observable<any> {
+  srvCrearDatosPersonales(data: IDatosPersonales): Observable<any> {
 
     return this.http.post<any>(`${this.urlApi}/service/datosPersonales/create`, data).pipe(
       catchError((e: any) => { return throwError(() => e) })
@@ -41,7 +41,7 @@ export class DatosPersonalesService {
    * @param data
    * @returns
    */
-  srvUpdateDatosPersonales(data: any): Observable<any> {
+  srvUpdateDatosPersonales(data: IDatosPersonales): Observable<any> {
 
     return this.http.put<any>(`${this.urlApi}/service/datosPersonales/update/${data.codPersona}`, data).pipe(
       catchError((e: any) => { return throwError(() => e) })

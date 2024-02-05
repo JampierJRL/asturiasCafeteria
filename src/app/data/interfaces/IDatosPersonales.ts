@@ -1,4 +1,5 @@
 export interface IDatosPersonales {
+  codPersona:      number;
   numeroDocumento: string;
   primerNombre:    string;
   sexoDescripcion: string;

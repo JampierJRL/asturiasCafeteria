@@ -10,6 +10,7 @@ import { TipoPagoComponent } from './tipopago/tipopago.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
 import { DatosPersonalesComponent } from './datospersonales/datospersonales.component';
 import { SucursalesComponent } from './sucursales/sucursales.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,11 @@ const routes: Routes = [
     path: 'sucursales',
     component: SucursalesComponent, // Asegúrate de tener este componente
     title: `${titleApp} Sucursales`
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent, // Asegúrate de tener este componente
+    title: `${titleApp} Usuarios`
   }
 ];
 

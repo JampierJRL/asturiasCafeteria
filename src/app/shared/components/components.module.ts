@@ -11,6 +11,9 @@ import { CboDepartamentoComponent } from './cbo-departamento/cbo-departamento.co
 import { CboProvinciasComponent } from './cbo-provincias/cbo-provincias.component';
 import { CboDistritosComponent } from './cbo-distritos/cbo-distritos.component';
 import { CboTipoDocumentoComponent } from './cbo-tipo-documento/cbo-tipo-documento.component';
+import { CboPerfilesUserComponent } from './cbo-perfiles-user/cbo-perfiles-user.component';
+import { CboPersonaUserComponent } from './cbo-persona-user/cbo-persona-user.component';
+import { CboSucursalesUserComponent } from './cbo-sucursales-user/cbo-sucursales-user.component';
 
 @NgModule({
   imports: [
@@ -28,7 +31,10 @@ import { CboTipoDocumentoComponent } from './cbo-tipo-documento/cbo-tipo-documen
     CboDepartamentoComponent,
     CboProvinciasComponent,
     CboDistritosComponent,
-    CboTipoDocumentoComponent
+    CboPerfilesUserComponent,
+    CboTipoDocumentoComponent,
+    CboPersonaUserComponent,
+    CboSucursalesUserComponent
   ],
   exports: [
     FooterComponent,
@@ -38,7 +44,11 @@ import { CboTipoDocumentoComponent } from './cbo-tipo-documento/cbo-tipo-documen
     CboDepartamentoComponent,
     CboProvinciasComponent,
     CboDistritosComponent,
-    CboTipoDocumentoComponent
+    CboPerfilesUserComponent,
+    CboTipoDocumentoComponent,
+    CboPersonaUserComponent,
+    CboSucursalesUserComponent
+    
   ]
 })
 export class ComponentsModule { }

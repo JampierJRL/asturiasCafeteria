@@ -1,0 +1,4 @@
+<select class="form-control" [(ngModel)]="setPersona" (change)="onEmitter()">
+<option value="">--: Seleccione :--</option>
+<option *ngFor="let persona of dtDatosPersonales" [value]="persona.codPersona">{{persona.numeroDocumento}}</option>
+</select>

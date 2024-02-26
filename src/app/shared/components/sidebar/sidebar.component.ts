@@ -18,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/mantenimiento/perfiles', title: 'Perfiles',  icon:'ni ni-bell-55 text-blue', class: '' },
     { path: '/mantenimiento/datospersonales', title: 'DatosPersonales',  icon:'ni ni-bell-55 text-blue', class: '' },
     { path: '/mantenimiento/sucursales', title: 'Sucursales',  icon:'ni ni-bell-55 text-blue', class: '' },
+    { path: '/mantenimiento/usuarios', title: 'Usuarios',  icon:'ni ni-bell-55 text-blue', class: '' },
 ];
 
 @Component({

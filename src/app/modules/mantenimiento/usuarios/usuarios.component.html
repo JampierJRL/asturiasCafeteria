@@ -1,0 +1,162 @@
+<!-- TOP BANNER -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="container-fluid mt--7 mb-5">
+    <div class="row">
+        <!-- TABLA LISTA DATA -->
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Lista de productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead>
+                                <tr>
+                                    <th scope="col">codUsuario</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">password</th>
+                                    <th scope="col">estadoClave</th>
+                                    <th scope="col">estadoCuenta</th>
+                                    <th scope="col">fechaCambioClave</th>
+                                    <th scope="col">Perfil</th>
+                                    <th scope="col">Datos Personales</th>
+                                    <th scope="col">Sucursal</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of dtListaUsuarios">
+                                    <td>{{item.codUsuario}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.password}}</td>
+                                    <td>{{item.estadoClave}}</td>
+                                    <td>{{item.estadoCuenta}}</td>
+                                    <td>{{item.fechaCambioClave}}</td>
+                                    <td>{{item.perfiles.descripcionPerfil}}</td>
+                                    <td>{{item.datosPersonales.numeroDocumento}}</td>
+                                    <td>{{item.sucursales.nombreSucursal}}</td>
+
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" (click)="onPreviewModel(item)">Editar</button>
+                                        <button class="btn btn-sm btn-danger" (click)="onEliminarUsuarios(item.codUsuario)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FORMULARIO -->
+        <div class="col-lg-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="text-uppercase text-light ls-1 mb-1">Formulario productos</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="overflow: auto; max-height: 400px;">
+                    <form (submit)="onprocesarUsuarios()" [formGroup]="modeloUsuarios">
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" formControlName="email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Estado Clave</label>
+                                <select class="form-control" formControlName="estadoClave">
+                              <option value="">---: Seleccione :---</option>
+                              <option value="true">Activo</option>
+                              <option value="false">Inactivo</option>
+                          </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Estado Cuenta</label>
+                                <select class="form-control" formControlName="estadoCuenta">
+                              <option value="">---: Seleccione :---</option>
+                              <option value="true">Activo</option>
+                              <option value="false">Inactivo</option>
+                          </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="">Fecha Cambio Clave</label>
+                                <input type="date" class="form-control" formControlName="fechaCambioClave">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Perfiles</label>
+                                <app-cbo-perfiles-user [setPerfiles]="modeloUsuarios.get('perfiles.codPerfil').value" (getPerfiles)="modeloUsuarios.get('perfiles.codPerfil').setValue($event)">
+                                </app-cbo-perfiles-user>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Datos Personales/DNI</label>
+                                <app-cbo-persona-user [setPersona]="modeloUsuarios.get('datosPersonales.codPersona').value" (getPersona)="modeloUsuarios.get('datosPersonales.codPersona').setValue($event)">
+                                </app-cbo-persona-user>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-5">
+                                <label for="">Sucursal</label>
+                                <app-cbo-sucursales-user [setSucursales]="modeloUsuarios.get('sucursales.codSucursal').value" (getSucursales)="modeloUsuarios.get('sucursales.codSucursal').setValue($event)">
+                                </app-cbo-sucursales-user>
+                            </div>
+                        </div>
+
+
+
+                        {{modeloUsuarios.value | json}}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" [disabled]="!modeloUsuarios.valid" class="btn btn-success">Procesar</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

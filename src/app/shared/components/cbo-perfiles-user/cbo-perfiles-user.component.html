@@ -1,0 +1,4 @@
+<select class="form-control" [(ngModel)]="setPerfiles" (change)="onEmitter()">
+<option value="">--: Seleccione :--</option>
+<option *ngFor="let perfiles of dtPerfiles" [value]="perfiles.codPerfil">{{perfiles.descripcionPerfil}}</option>
+</select>
